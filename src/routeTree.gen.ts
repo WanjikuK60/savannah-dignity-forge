@@ -9,8 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Phase4RouteImport } from './routes/phase-4'
+import { Route as Phase3RouteImport } from './routes/phase-3'
+import { Route as Phase2RouteImport } from './routes/phase-2'
+import { Route as Phase1RouteImport } from './routes/phase-1'
+import { Route as ApplicantsRouteImport } from './routes/applicants'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const Phase4Route = Phase4RouteImport.update({
+  id: '/phase-4',
+  path: '/phase-4',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Phase3Route = Phase3RouteImport.update({
+  id: '/phase-3',
+  path: '/phase-3',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Phase2Route = Phase2RouteImport.update({
+  id: '/phase-2',
+  path: '/phase-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Phase1Route = Phase1RouteImport.update({
+  id: '/phase-1',
+  path: '/phase-1',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApplicantsRoute = ApplicantsRouteImport.update({
+  id: '/applicants',
+  path: '/applicants',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +55,116 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/applicants': typeof ApplicantsRoute
+  '/phase-1': typeof Phase1Route
+  '/phase-2': typeof Phase2Route
+  '/phase-3': typeof Phase3Route
+  '/phase-4': typeof Phase4Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/applicants': typeof ApplicantsRoute
+  '/phase-1': typeof Phase1Route
+  '/phase-2': typeof Phase2Route
+  '/phase-3': typeof Phase3Route
+  '/phase-4': typeof Phase4Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/applicants': typeof ApplicantsRoute
+  '/phase-1': typeof Phase1Route
+  '/phase-2': typeof Phase2Route
+  '/phase-3': typeof Phase3Route
+  '/phase-4': typeof Phase4Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/applicants'
+    | '/phase-1'
+    | '/phase-2'
+    | '/phase-3'
+    | '/phase-4'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/applicants'
+    | '/phase-1'
+    | '/phase-2'
+    | '/phase-3'
+    | '/phase-4'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/applicants'
+    | '/phase-1'
+    | '/phase-2'
+    | '/phase-3'
+    | '/phase-4'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ApplicantsRoute: typeof ApplicantsRoute
+  Phase1Route: typeof Phase1Route
+  Phase2Route: typeof Phase2Route
+  Phase3Route: typeof Phase3Route
+  Phase4Route: typeof Phase4Route
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/phase-4': {
+      id: '/phase-4'
+      path: '/phase-4'
+      fullPath: '/phase-4'
+      preLoaderRoute: typeof Phase4RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/phase-3': {
+      id: '/phase-3'
+      path: '/phase-3'
+      fullPath: '/phase-3'
+      preLoaderRoute: typeof Phase3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/phase-2': {
+      id: '/phase-2'
+      path: '/phase-2'
+      fullPath: '/phase-2'
+      preLoaderRoute: typeof Phase2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/phase-1': {
+      id: '/phase-1'
+      path: '/phase-1'
+      fullPath: '/phase-1'
+      preLoaderRoute: typeof Phase1RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/applicants': {
+      id: '/applicants'
+      path: '/applicants'
+      fullPath: '/applicants'
+      preLoaderRoute: typeof ApplicantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +177,23 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ApplicantsRoute: ApplicantsRoute,
+  Phase1Route: Phase1Route,
+  Phase2Route: Phase2Route,
+  Phase3Route: Phase3Route,
+  Phase4Route: Phase4Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
