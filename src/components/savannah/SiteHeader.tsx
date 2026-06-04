@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Mountain } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-const NAV = [
+const NAV: { to: "/" | "/applicants" | "/phase-1" | "/phase-2" | "/phase-3" | "/phase-4" | "/about"; label: string; exact?: boolean }[] = [
   { to: "/", label: "Home", exact: true },
   { to: "/applicants", label: "Applicants" },
   { to: "/phase-1", label: "Phase 1 · Diagnostic" },
@@ -11,7 +11,7 @@ const NAV = [
   { to: "/phase-3", label: "Phase 3 · Ethical" },
   { to: "/phase-4", label: "Phase 4 · Agents" },
   { to: "/about", label: "About" },
-] as const;
+];
 
 export function SiteHeader() {
   return (
