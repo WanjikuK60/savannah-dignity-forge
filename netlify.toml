@@ -1,0 +1,4 @@
+# The site is hosted on GitHub Pages. Tell Netlify to skip every build
+# (an ignore command that exits 0 means "nothing to deploy").
+[build]
+  ignore = "exit 0"
