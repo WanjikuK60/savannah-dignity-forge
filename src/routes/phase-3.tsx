@@ -13,9 +13,9 @@ export const Route = createFileRoute("/phase-3")({
       },
       { property: "og:title", content: "Phase 3 · Ethical Savannah" },
       { property: "og:description", content: "Where ethics is operational, not aspirational." },
-      { property: "og:url", content: "https://savannah-dignity-forge.lovable.app/phase-3" },
+      { property: "og:url", content: "https://wanjikuk60.github.io/savannah-loan-system/phase-3" },
     ],
-    links: [{ rel: "canonical", href: "https://savannah-dignity-forge.lovable.app/phase-3" }],
+    links: [{ rel: "canonical", href: "https://wanjikuk60.github.io/savannah-loan-system/phase-3" }],
   }),
   component: () => (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">

@@ -1,6 +1,6 @@
 # Savannah Precision Loan System
 
-**Live site:** https://wanjikuk60.github.io/savannah-dignity-forge/
+**Live site:** https://wanjikuk60.github.io/savannah-loan-system/
 
 An interactive demo of a fairer loan-decision framework for a fictional SACCO, Ujima SACCO, serving informal market vendors in East Africa. Legacy credit models deny market vendors far more often than salaried workers, because they expect monthly payslips. Savannah recalculates loans around harvests and mobile-money activity, and adds bias audits, dignity checks and human review.
 
@@ -27,8 +27,8 @@ React 19 · TypeScript · TanStack Start and Router · Tailwind CSS 4 · Radix U
 This project uses [Bun](https://bun.sh); its lockfile (`bun.lock`) pins the exact versions.
 
 ```bash
-git clone https://github.com/WanjikuK60/savannah-dignity-forge.git
-cd savannah-dignity-forge
+git clone https://github.com/WanjikuK60/savannah-loan-system.git
+cd savannah-loan-system
 bun install
 bun run dev
 ```
@@ -39,7 +39,7 @@ Then open http://localhost:8080.
 | ------------------------------ | ------------------------------------------------------------------------------- |
 | `bun run dev`                  | Start the dev server                                                            |
 | `bun run build`                | Production build with the Nitro (Cloudflare) server bundle that Lovable deploys |
-| `GITHUB_PAGES=1 bun run build` | Static build: every page pre-rendered to HTML under `/savannah-dignity-forge/`  |
+| `GITHUB_PAGES=1 bun run build` | Static build: every page pre-rendered to HTML under `/savannah-loan-system/`  |
 | `bun run lint`                 | ESLint and Prettier checks                                                      |
 | `bun run format`               | Format all files with Prettier                                                  |
 

@@ -16,9 +16,9 @@ export const Route = createFileRoute("/applicants")({
         property: "og:description",
         content: "Side-by-side recalculation of informal vendor risk profiles.",
       },
-      { property: "og:url", content: "https://savannah-dignity-forge.lovable.app/applicants" },
+      { property: "og:url", content: "https://wanjikuk60.github.io/savannah-loan-system/applicants" },
     ],
-    links: [{ rel: "canonical", href: "https://savannah-dignity-forge.lovable.app/applicants" }],
+    links: [{ rel: "canonical", href: "https://wanjikuk60.github.io/savannah-loan-system/applicants" }],
   }),
   component: () => (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">

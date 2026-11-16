@@ -77,7 +77,7 @@ export function SiteFooter() {
         OASIS · PRIDE · GUARD · CYCLE
         <p className="mt-2">
           <a
-            href="https://github.com/WanjikuK60/savannah-dignity-forge"
+            href="https://github.com/WanjikuK60/savannah-loan-system"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-primary underline-offset-4 hover:underline"
