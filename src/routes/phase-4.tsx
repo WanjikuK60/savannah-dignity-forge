@@ -16,9 +16,9 @@ export const Route = createFileRoute("/phase-4")({
         property: "og:description",
         content: "Specialized agents with human oversight by default.",
       },
-      { property: "og:url", content: "https://savannah-dignity-forge.lovable.app/phase-4" },
+      { property: "og:url", content: "https://wanjikuk60.github.io/savannah-loan-system/phase-4" },
     ],
-    links: [{ rel: "canonical", href: "https://savannah-dignity-forge.lovable.app/phase-4" }],
+    links: [{ rel: "canonical", href: "https://wanjikuk60.github.io/savannah-loan-system/phase-4" }],
   }),
   component: () => (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">

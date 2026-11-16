@@ -16,9 +16,9 @@ export const Route = createFileRoute("/phase-1")({
         property: "og:description",
         content: "Quantifying where the legacy 2025 model fails informal vendors.",
       },
-      { property: "og:url", content: "https://savannah-dignity-forge.lovable.app/phase-1" },
+      { property: "og:url", content: "https://wanjikuk60.github.io/savannah-loan-system/phase-1" },
     ],
-    links: [{ rel: "canonical", href: "https://savannah-dignity-forge.lovable.app/phase-1" }],
+    links: [{ rel: "canonical", href: "https://wanjikuk60.github.io/savannah-loan-system/phase-1" }],
   }),
   component: () => (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">

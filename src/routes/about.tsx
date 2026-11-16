@@ -19,9 +19,9 @@ export const Route = createFileRoute("/about")({
         content:
           "How Ujima SACCO replaces rigid banking logic with a harvest-aware, dignity-centered credit model.",
       },
-      { property: "og:url", content: "https://savannah-dignity-forge.lovable.app/about" },
+      { property: "og:url", content: "https://wanjikuk60.github.io/savannah-loan-system/about" },
     ],
-    links: [{ rel: "canonical", href: "https://savannah-dignity-forge.lovable.app/about" }],
+    links: [{ rel: "canonical", href: "https://wanjikuk60.github.io/savannah-loan-system/about" }],
   }),
   component: About,
 });

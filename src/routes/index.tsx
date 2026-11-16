@@ -20,9 +20,9 @@ export const Route = createFileRoute("/")({
         content:
           "Dismantling loan approval bias through the Savannah Precision Project Framework (Phases 1–4).",
       },
-      { property: "og:url", content: "https://savannah-dignity-forge.lovable.app/" },
+      { property: "og:url", content: "https://wanjikuk60.github.io/savannah-loan-system/" },
     ],
-    links: [{ rel: "canonical", href: "https://savannah-dignity-forge.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://wanjikuk60.github.io/savannah-loan-system/" }],
   }),
   component: Home,
 });
