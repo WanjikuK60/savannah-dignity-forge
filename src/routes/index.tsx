@@ -9,9 +9,17 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Savannah Precision Loan System — Ujima SACCO" },
-      { name: "description", content: "Human-centered, bias-aware credit decisioning for informal market vendors in East Africa." },
+      {
+        name: "description",
+        content:
+          "Human-centered, bias-aware credit decisioning for informal market vendors in East Africa.",
+      },
       { property: "og:title", content: "Savannah Precision Loan System" },
-      { property: "og:description", content: "Dismantling loan approval bias through the Savannah Precision Project Framework (Phases 1–4)." },
+      {
+        property: "og:description",
+        content:
+          "Dismantling loan approval bias through the Savannah Precision Project Framework (Phases 1–4).",
+      },
       { property: "og:url", content: "https://savannah-dignity-forge.lovable.app/" },
     ],
     links: [{ rel: "canonical", href: "https://savannah-dignity-forge.lovable.app/" }],
@@ -20,10 +28,30 @@ export const Route = createFileRoute("/")({
 });
 
 const PHASES = [
-  { to: "/phase-1", icon: Activity, title: "Phase 1 · Diagnostic", desc: "Bias audit, OCEAN checks, and the MAP harvest-aware repayment engine." },
-  { to: "/phase-2", icon: Network, title: "Phase 2 · Tsavo Fluency", desc: "4D Delegation Matrix, prompt-engineering hub & Agricultural Observatory RAG." },
-  { to: "/phase-3", icon: ShieldCheck, title: "Phase 3 · Ethical Savannah", desc: "ETHOS transforms, TRACK forensic audit, OASIS data sovereignty & Kill Switch." },
-  { to: "/phase-4", icon: Bot, title: "Phase 4 · Agent Savannah", desc: "Scout, Guardian, Hunter agents with live GUARD/CYCLE oversight feed." },
+  {
+    to: "/phase-1",
+    icon: Activity,
+    title: "Phase 1 · Diagnostic",
+    desc: "Bias audit, OCEAN checks, and the MAP harvest-aware repayment engine.",
+  },
+  {
+    to: "/phase-2",
+    icon: Network,
+    title: "Phase 2 · Tsavo Fluency",
+    desc: "4D Delegation Matrix, prompt-engineering hub & Agricultural Observatory RAG.",
+  },
+  {
+    to: "/phase-3",
+    icon: ShieldCheck,
+    title: "Phase 3 · Ethical Savannah",
+    desc: "ETHOS transforms, TRACK forensic audit, OASIS data sovereignty & Kill Switch.",
+  },
+  {
+    to: "/phase-4",
+    icon: Bot,
+    title: "Phase 4 · Agent Savannah",
+    desc: "Scout, Guardian, Hunter agents with a simulated GUARD/CYCLE oversight feed.",
+  },
 ] as const;
 
 function Home() {
@@ -47,7 +75,9 @@ function Home() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Button asChild size="lg" className="gap-2">
-              <Link to="/applicants">Try the live applicant demo <ArrowRight className="size-4" /></Link>
+              <Link to="/applicants">
+                Try the applicant demo <ArrowRight className="size-4" />
+              </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
               <Link to="/about">How the framework works</Link>
@@ -61,10 +91,19 @@ function Home() {
             <CardDescription>From the Phase 1 internal audit, Q4 2025.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Stat label="Market vendor denial rate" value={`${BIAS_BASELINE.marketVendorDenial}%`} tone="bad" />
-            <Stat label="Formal employee denial rate" value={`${BIAS_BASELINE.formalEmployeeDenial}%`} tone="good" />
+            <Stat
+              label="Market vendor denial rate"
+              value={`${BIAS_BASELINE.marketVendorDenial}%`}
+              tone="bad"
+            />
+            <Stat
+              label="Formal employee denial rate"
+              value={`${BIAS_BASELINE.formalEmployeeDenial}%`}
+              tone="good"
+            />
             <div className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm">
-              <b>Variance: {variance} pp</b> — above the {BIAS_BASELINE.killSwitchThreshold}% Kill Switch threshold.
+              <b>Variance: {variance} pp</b> — above the {BIAS_BASELINE.killSwitchThreshold}% Kill
+              Switch threshold.
             </div>
           </CardContent>
         </Card>
@@ -75,10 +114,14 @@ function Home() {
         <div className="flex items-end justify-between">
           <div>
             <h3 className="text-2xl font-bold tracking-tight">Explore the four phases</h3>
-            <p className="text-sm text-muted-foreground">Each phase is now its own dedicated workspace.</p>
+            <p className="text-sm text-muted-foreground">
+              Each phase is now its own dedicated workspace.
+            </p>
           </div>
           <Button asChild variant="ghost" className="hidden gap-2 md:inline-flex">
-            <Link to="/applicants"><Users className="size-4" /> Applicants</Link>
+            <Link to="/applicants">
+              <Users className="size-4" /> Applicants
+            </Link>
           </Button>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
@@ -96,7 +139,8 @@ function Home() {
                 <CardContent>
                   <p className="text-sm text-muted-foreground">{p.desc}</p>
                   <div className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
-                    Open phase <ArrowRight className="size-3 transition group-hover:translate-x-0.5" />
+                    Open phase{" "}
+                    <ArrowRight className="size-3 transition group-hover:translate-x-0.5" />
                   </div>
                 </CardContent>
               </Card>
@@ -116,7 +160,9 @@ function Home() {
             </p>
           </div>
           <Button asChild size="lg" variant="secondary" className="gap-2">
-            <Link to="/applicants">Open Applicants <ArrowRight className="size-4" /></Link>
+            <Link to="/applicants">
+              Open Applicants <ArrowRight className="size-4" />
+            </Link>
           </Button>
         </div>
       </section>
@@ -128,7 +174,11 @@ function Stat({ label, value, tone }: { label: string; value: string; tone: "goo
   return (
     <div className="flex items-center justify-between rounded-lg border bg-card p-3">
       <span className="text-sm">{label}</span>
-      <span className={`text-2xl font-bold tabular-nums ${tone === "bad" ? "text-destructive" : "text-primary"}`}>{value}</span>
+      <span
+        className={`text-2xl font-bold tabular-nums ${tone === "bad" ? "text-destructive" : "text-primary"}`}
+      >
+        {value}
+      </span>
     </div>
   );
 }

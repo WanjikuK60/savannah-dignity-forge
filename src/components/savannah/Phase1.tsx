@@ -1,8 +1,16 @@
 // Phase 1 — Savannah Precision: Diagnostic & MAP Repayment Engine
 import { useState } from "react";
 import {
-  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
-  LineChart, Line, Legend,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid,
+  LineChart,
+  Line,
+  Legend,
 } from "recharts";
 import { AlertTriangle, Database, Tags, Sprout, Terminal, CheckCircle2, Flag } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,7 +20,10 @@ import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import {
-  BIAS_BASELINE, FAILURE_HYPOTHESES, OCEAN_CHECKS, buildSchedule,
+  BIAS_BASELINE,
+  FAILURE_HYPOTHESES,
+  OCEAN_CHECKS,
+  buildSchedule,
 } from "@/lib/savannah-data";
 
 export function Phase1() {
@@ -46,7 +57,8 @@ export function Phase1() {
               2025 Bias Audit — Denial Rate Disparity
             </CardTitle>
             <CardDescription>
-              Ujima SACCO baseline. Variance of <b>{variance}pp</b> exceeds the {BIAS_BASELINE.killSwitchThreshold}% kill-switch threshold.
+              Ujima SACCO baseline. Variance of <b>{variance}pp</b> exceeds the{" "}
+              {BIAS_BASELINE.killSwitchThreshold}% kill-switch threshold.
             </CardDescription>
           </CardHeader>
           <CardContent className="h-64">
@@ -97,9 +109,13 @@ export function Phase1() {
               </CardDescription>
             </div>
             <div className="flex items-center gap-3 rounded-lg border bg-secondary/40 px-3 py-2">
-              <Label htmlFor="map-mode" className="text-sm">Standard</Label>
+              <Label htmlFor="map-mode" className="text-sm">
+                Standard
+              </Label>
               <Switch id="map-mode" checked={mapMode} onCheckedChange={setMapMode} />
-              <Label htmlFor="map-mode" className="text-sm font-semibold text-primary">MAP Adaptive</Label>
+              <Label htmlFor="map-mode" className="text-sm font-semibold text-primary">
+                MAP Adaptive
+              </Label>
             </div>
           </div>
         </CardHeader>
@@ -107,20 +123,35 @@ export function Phase1() {
           <div className="grid gap-6 md:grid-cols-3">
             <div className="space-y-2">
               <Label>Principal (KES)</Label>
-              <Slider value={[principal]} min={20000} max={500000} step={5000}
-                onValueChange={(v) => setPrincipal(v[0])} />
+              <Slider
+                value={[principal]}
+                min={20000}
+                max={500000}
+                step={5000}
+                onValueChange={(v) => setPrincipal(v[0])}
+              />
               <div className="text-lg font-bold tabular-nums">KES {principal.toLocaleString()}</div>
             </div>
             <div className="space-y-2">
               <Label>Tenure (months)</Label>
-              <Slider value={[tenure]} min={6} max={36} step={1}
-                onValueChange={(v) => setTenure(v[0])} />
+              <Slider
+                value={[tenure]}
+                min={6}
+                max={36}
+                step={1}
+                onValueChange={(v) => setTenure(v[0])}
+              />
               <div className="text-lg font-bold tabular-nums">{tenure} months</div>
             </div>
             <div className="space-y-2">
               <Label>Annual rate (%)</Label>
-              <Slider value={[rate]} min={6} max={24} step={0.5}
-                onValueChange={(v) => setRate(v[0])} />
+              <Slider
+                value={[rate]}
+                min={6}
+                max={24}
+                step={0.5}
+                onValueChange={(v) => setRate(v[0])}
+              />
               <div className="text-lg font-bold tabular-nums">{rate}%</div>
             </div>
           </div>
@@ -133,18 +164,28 @@ export function Phase1() {
                 <YAxis tickFormatter={(v) => `${(v / 1000).toFixed(0)}k`} />
                 <Tooltip formatter={(v: number) => `KES ${v.toLocaleString()}`} />
                 <Legend />
-                <Line type="monotone" dataKey="Standard" stroke="var(--color-chart-4)" strokeWidth={2} dot={false} />
-                <Line type="monotone" dataKey="MAP Harvest"
-                  stroke="var(--color-chart-1)" strokeWidth={3}
-                  strokeDasharray={mapMode ? "0" : "4 4"} />
+                <Line
+                  type="monotone"
+                  dataKey="Standard"
+                  stroke="var(--color-chart-4)"
+                  strokeWidth={2}
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="MAP Harvest"
+                  stroke="var(--color-chart-1)"
+                  strokeWidth={3}
+                  strokeDasharray={mapMode ? "0" : "4 4"}
+                />
               </LineChart>
             </ResponsiveContainer>
           </div>
           <p className="text-sm text-muted-foreground">
             {mapMode
-              ? "MAP schedule lowers off-harvest payments to ~KES "
-                + map.filter((_, i) => ![2,3,8,9].includes(i % 12))[0]?.payment.toLocaleString()
-                + " and concentrates burden in harvest months — projected default risk for matooke vendors drops from 31% to 8%."
+              ? "MAP schedule lowers off-harvest payments to ~KES " +
+                map.filter((_, i) => ![2, 3, 8, 9].includes(i % 12))[0]?.payment.toLocaleString() +
+                " and concentrates burden in harvest months — projected default risk for matooke vendors drops from 31% to 8%."
               : "Standard flat schedule. Vendors face uniform pressure in lean months — historical default rate 31%."}
           </p>
         </CardContent>
@@ -162,22 +203,25 @@ export function Phase1() {
         </CardHeader>
         <CardContent>
           <pre className="rounded-lg bg-foreground p-4 font-mono text-xs leading-relaxed text-background overflow-x-auto">
-{`▶ verifier start  applicant=grace.akech  policy=CBK/PG/22
+            {`▶ verifier start  applicant=grace.akech  policy=CBK/PG/22
 ▶ chain-of-thought:
   1. parse_mpesa(window=12mo) → 432 txns, KES 864,000 inflow
   2. detect_occupation_cluster → ["vendor","subsistence_farmer"]
   3. align_repayment(harvest=[Mar,Apr,Sep,Oct])
   4. compute_risk(blended_velocity, seasonality=0.82)
 ▶ verifier OCEAN:`}
-{"\n"}{OCEAN_CHECKS.map((c) =>
-  `  [${c.code}] ${c.label.padEnd(12)} ${c.line}`
-).join("\n")}
-{`\n▶ verdict: PASS (score 0.91/1.00) — route to human cultural validator`}
+            {"\n"}
+            {OCEAN_CHECKS.map((c) => `  [${c.code}] ${c.label.padEnd(12)} ${c.line}`).join("\n")}
+            {`\n▶ verdict: PASS (score 0.91/1.00) — route to human cultural validator`}
           </pre>
           <div className="mt-3 flex flex-wrap gap-2">
             {OCEAN_CHECKS.map((c) => (
               <Badge key={c.code} variant="outline" className="gap-1">
-                {c.code === "N" ? <Flag className="size-3" /> : <CheckCircle2 className="size-3 text-primary" />}
+                {c.code === "N" ? (
+                  <Flag className="size-3" />
+                ) : (
+                  <CheckCircle2 className="size-3 text-primary" />
+                )}
                 {c.label}
               </Badge>
             ))}
@@ -185,7 +229,9 @@ export function Phase1() {
         </CardContent>
       </Card>
 
-      <Button variant="outline" className="ml-auto block">Re-run diagnostic</Button>
+      <Button variant="outline" className="ml-auto block">
+        Re-run diagnostic
+      </Button>
     </div>
   );
 }

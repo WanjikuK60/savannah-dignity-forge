@@ -61,12 +61,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           >
             Try again
           </button>
-          <a
-            href="/"
+          <Link
+            to="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
             Go home
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -78,24 +78,44 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Savannah Loan Compass is a web application that combats loan approval bias for informal market vendors." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Savannah Loan Compass is a web application that combats loan approval bias for informal market vendors." },
+      { title: "Savannah Precision Loan System" },
+      {
+        name: "description",
+        content:
+          "Savannah Loan Compass is a web application that combats loan approval bias for informal market vendors.",
+      },
+      { name: "author", content: "Wanjiku Kamande" },
+      { property: "og:title", content: "Savannah Precision Loan System" },
+      {
+        property: "og:description",
+        content:
+          "Savannah Loan Compass is a web application that combats loan approval bias for informal market vendors.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lovable App" },
-      { name: "twitter:description", content: "Savannah Loan Compass is a web application that combats loan approval bias for informal market vendors." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/60df7018-f8d0-4cc9-aa7b-c43cb79aaf51/id-preview-79cfa7db--f602d994-062c-4239-a814-915252406760.lovable.app-1780592806303.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/60df7018-f8d0-4cc9-aa7b-c43cb79aaf51/id-preview-79cfa7db--f602d994-062c-4239-a814-915252406760.lovable.app-1780592806303.png" },
+      { name: "twitter:title", content: "Savannah Precision Loan System" },
+      {
+        name: "twitter:description",
+        content:
+          "Savannah Loan Compass is a web application that combats loan approval bias for informal market vendors.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/60df7018-f8d0-4cc9-aa7b-c43cb79aaf51/id-preview-79cfa7db--f602d994-062c-4239-a814-915252406760.lovable.app-1780592806303.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/60df7018-f8d0-4cc9-aa7b-c43cb79aaf51/id-preview-79cfa7db--f602d994-062c-4239-a814-915252406760.lovable.app-1780592806303.png",
+      },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", type: "image/svg+xml", href: `${import.meta.env.BASE_URL}favicon.svg` },
     ],
   }),
   shellComponent: RootShell,
