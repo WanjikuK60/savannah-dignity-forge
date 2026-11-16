@@ -75,6 +75,16 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-6 text-center text-xs text-muted-foreground md:px-8">
         Built on the Savannah Precision Project Framework · Phases 1–4 · OCEAN · ETHOS · TRACK ·
         OASIS · PRIDE · GUARD · CYCLE
+        <p className="mt-2">
+          <a
+            href="https://github.com/WanjikuK60/savannah-dignity-forge"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            View source on GitHub
+          </a>
+        </p>
       </div>
     </footer>
   );
