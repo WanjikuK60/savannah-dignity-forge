@@ -3,16 +3,16 @@ import { ArrowRight, Activity, Network, ShieldCheck, Bot, Users, Sparkles } from
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { BIAS_BASELINE } from "@/lib/savannah-data";
+import { KENYA_FACTS } from "@/lib/kenya-facts";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Savannah Precision Loan System — Ujima SACCO" },
+      { title: "Savannah Precision Loan System" },
       {
         name: "description",
         content:
-          "Human-centered, bias-aware credit decisioning for informal market vendors in East Africa.",
+          "A concept for human-centered, bias-aware credit decisioning for informal market vendors in East Africa.",
       },
       { property: "og:title", content: "Savannah Precision Loan System" },
       {
@@ -38,7 +38,7 @@ const PHASES = [
     to: "/phase-2",
     icon: Network,
     title: "Phase 2 · Tsavo Fluency",
-    desc: "4D Delegation Matrix, prompt-engineering hub & Agricultural Observatory RAG.",
+    desc: "4D Delegation Matrix, prompt-engineering hub & agricultural data RAG.",
   },
   {
     to: "/phase-3",
@@ -50,33 +50,31 @@ const PHASES = [
     to: "/phase-4",
     icon: Bot,
     title: "Phase 4 · Agent Savannah",
-    desc: "Scout, Guardian, Hunter agents with a simulated GUARD/CYCLE oversight feed.",
+    desc: "Scout, Guardian, Hunter agents with a GUARD/CYCLE oversight feed.",
   },
 ] as const;
 
 function Home() {
-  const variance = BIAS_BASELINE.marketVendorDenial - BIAS_BASELINE.formalEmployeeDenial;
-
   return (
     <div className="mx-auto max-w-7xl space-y-12 px-4 py-10 md:px-8">
       {/* Hero */}
       <section className="grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-center">
         <div className="space-y-5">
           <Badge className="bg-accent text-accent-foreground">
-            <Sparkles className="mr-1 size-3" /> Pilot · Nairobi · 2026
+            <Sparkles className="mr-1 size-3" /> Concept prototype · Nairobi · 2026
           </Badge>
           <h2 className="text-4xl font-bold leading-tight tracking-tight md:text-5xl">
             Loans recalculated around <span className="text-primary">harvests</span>, not payslips.
           </h2>
           <p className="text-lg text-muted-foreground">
-            Ujima SACCO's Savannah Precision Loan System replaces rigid 2025-era credit logic with a
-            harvest-aware, mobile-money-literate, dignity-centered model — purpose-built for the
-            informal vendors who keep East Africa's markets alive.
+            The Savannah Precision Loan System shows how a SACCO could replace rigid, payslip-based
+            credit logic with a harvest-aware, mobile-money-literate, dignity-centered model — built
+            for the informal vendors who keep East Africa's markets alive.
           </p>
           <div className="flex flex-wrap gap-3">
             <Button asChild size="lg" className="gap-2">
               <Link to="/applicants">
-                Try the applicant demo <ArrowRight className="size-4" />
+                Compare the two models <ArrowRight className="size-4" />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
@@ -87,24 +85,13 @@ function Home() {
 
         <Card className="border-primary/40 bg-gradient-to-br from-primary/5 to-accent/10">
           <CardHeader>
-            <CardTitle className="text-base">2025 Legacy Model — Bias Snapshot</CardTitle>
-            <CardDescription>From the Phase 1 internal audit, Q4 2025.</CardDescription>
+            <CardTitle className="text-base">Why it matters — Kenya in numbers</CardTitle>
+            <CardDescription>Real figures, each linked to its source.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
-            <Stat
-              label="Market vendor denial rate"
-              value={`${BIAS_BASELINE.marketVendorDenial}%`}
-              tone="bad"
-            />
-            <Stat
-              label="Formal employee denial rate"
-              value={`${BIAS_BASELINE.formalEmployeeDenial}%`}
-              tone="good"
-            />
-            <div className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm">
-              <b>Variance: {variance} pp</b> — above the {BIAS_BASELINE.killSwitchThreshold}% Kill
-              Switch threshold.
-            </div>
+            {KENYA_FACTS.map((f) => (
+              <Stat key={f.value} {...f} />
+            ))}
           </CardContent>
         </Card>
       </section>
@@ -153,10 +140,10 @@ function Home() {
       <section className="rounded-2xl border bg-gradient-to-br from-primary to-primary/85 p-8 text-primary-foreground">
         <div className="grid items-center gap-4 md:grid-cols-[1fr_auto]">
           <div>
-            <h3 className="text-2xl font-bold">See Grace Akech's case in 30 seconds.</h3>
+            <h3 className="text-2xl font-bold">See an example case in 30 seconds.</h3>
             <p className="mt-1 text-primary-foreground/85">
-              The legacy model denies her 4×. The Savannah Precision Model approves her with a safe,
-              harvest-aligned schedule. Open the side-by-side demo.
+              Grace Akech, an illustrative matooke vendor, is denied by a payslip-only model. The
+              Savannah Precision Model approves her with a safe, harvest-aligned schedule.
             </p>
           </div>
           <Button asChild size="lg" variant="secondary" className="gap-2">
@@ -170,15 +157,33 @@ function Home() {
   );
 }
 
-function Stat({ label, value, tone }: { label: string; value: string; tone: "good" | "bad" }) {
+function Stat({
+  value,
+  label,
+  source,
+  url,
+}: {
+  value: string;
+  label: string;
+  source: string;
+  url: string;
+}) {
   return (
-    <div className="flex items-center justify-between rounded-lg border bg-card p-3">
-      <span className="text-sm">{label}</span>
-      <span
-        className={`text-2xl font-bold tabular-nums ${tone === "bad" ? "text-destructive" : "text-primary"}`}
+    <div className="rounded-lg border bg-card p-3">
+      <div className="flex items-baseline gap-3">
+        <span className="shrink-0 whitespace-nowrap text-2xl font-bold tabular-nums text-primary">
+          {value}
+        </span>
+        <span className="text-sm">{label}</span>
+      </div>
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-1 block text-xs text-muted-foreground underline-offset-2 hover:underline"
       >
-        {value}
-      </span>
+        Source: {source}
+      </a>
     </div>
   );
 }

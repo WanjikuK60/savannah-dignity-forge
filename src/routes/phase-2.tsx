@@ -9,7 +9,7 @@ export const Route = createFileRoute("/phase-2")({
       {
         name: "description",
         content:
-          "4D Delegation Matrix, prompt-engineering hub and a sample Kenya Agricultural Observatory RAG card.",
+          "4D Delegation Matrix, prompt-engineering hub and an agricultural data RAG card.",
       },
       { property: "og:title", content: "Phase 2 · Tsavo Fluency" },
       {

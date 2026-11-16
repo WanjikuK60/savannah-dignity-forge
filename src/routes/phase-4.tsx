@@ -9,7 +9,7 @@ export const Route = createFileRoute("/phase-4")({
       {
         name: "description",
         content:
-          "Scout, Guardian and Hunter agents with a simulated GUARD/CYCLE bias-blocking and dignity-filter feed.",
+          "Scout, Guardian and Hunter agents with a GUARD/CYCLE bias-blocking and dignity-filter feed.",
       },
       { property: "og:title", content: "Phase 4 · Agent Savannah" },
       {
@@ -25,7 +25,7 @@ export const Route = createFileRoute("/phase-4")({
       <PageHeading
         eyebrow="Phase 4"
         title="Agent Savannah"
-        subtitle="Specialized agents, simulated GUARD logs, and the CYCLE optimisation loop."
+        subtitle="Specialized agents, GUARD oversight logs, and the CYCLE optimisation loop."
       />
       <Phase4 />
     </div>

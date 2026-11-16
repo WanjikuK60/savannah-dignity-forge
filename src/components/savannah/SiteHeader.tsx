@@ -31,17 +31,17 @@ export function SiteHeader() {
                 Savannah Precision Loan System
               </h1>
               <p className="text-xs text-primary-foreground/80 md:text-sm">
-                Ujima SACCO · East Africa · Human-centered credit decisioning
+                Fairer credit for East Africa's informal workers
               </p>
             </div>
           </Link>
           <div className="flex flex-wrap items-center gap-2 text-xs">
-            <Badge className="bg-accent text-accent-foreground">CBK Aligned</Badge>
+            <Badge className="bg-accent text-accent-foreground">Concept prototype</Badge>
             <Badge
               variant="outline"
               className="border-primary-foreground/30 text-primary-foreground"
             >
-              v1.0 · Pilot Nairobi
+              v1.0 · Built in Nairobi
             </Badge>
             <Badge
               variant="outline"
@@ -65,6 +65,10 @@ export function SiteHeader() {
           ))}
         </nav>
       </div>
+      <p className="bg-primary-foreground/10 px-4 py-1.5 text-center text-xs text-primary-foreground/85">
+        Concept prototype: Ujima SACCO, its applicants and the agent and field data are
+        illustrative. Kenya statistics on the Home and About pages cite real sources.
+      </p>
     </header>
   );
 }

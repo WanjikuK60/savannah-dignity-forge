@@ -198,12 +198,12 @@ export function Phase1() {
             <Terminal className="size-5" /> Verifier Pattern Terminal — OCEAN Audit
           </CardTitle>
           <CardDescription>
-            Chain-of-Thought + Verifier check against CBK Microfinance Prudential Guidelines.
+            Chain-of-Thought + Verifier check against SASRA rules and the Data Protection Act, 2019.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <pre className="rounded-lg bg-foreground p-4 font-mono text-xs leading-relaxed text-background overflow-x-auto">
-            {`▶ verifier start  applicant=grace.akech  policy=CBK/PG/22
+            {`▶ verifier start  applicant=grace.akech  policy=SASRA+DPA2019
 ▶ chain-of-thought:
   1. parse_mpesa(window=12mo) → 432 txns, KES 864,000 inflow
   2. detect_occupation_cluster → ["vendor","subsistence_farmer"]

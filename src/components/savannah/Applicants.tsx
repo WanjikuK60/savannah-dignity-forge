@@ -15,7 +15,7 @@ export function Applicants() {
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Mock Applicants — Process through both models</CardTitle>
+          <CardTitle>Example Applicants — Process through both models</CardTitle>
           <CardDescription>
             Select an applicant to see the legacy 2025 model vs the Savannah Precision
             recalculation.
