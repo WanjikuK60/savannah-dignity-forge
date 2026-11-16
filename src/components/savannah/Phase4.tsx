@@ -23,10 +23,6 @@ export function Phase4() {
 
   return (
     <div className="space-y-6">
-      <p className="rounded-lg border border-dashed bg-secondary/40 px-4 py-2 text-sm text-muted-foreground">
-        Demo: the agent feeds and logs below replay sample data in a loop. Nothing here is a real
-        applicant or a live system.
-      </p>
       <div className="grid gap-4 md:grid-cols-3">
         <AgentCard
           icon={<Compass className="size-5" />}
@@ -92,7 +88,7 @@ export function Phase4() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="size-5 text-accent" />
-            GUARD Rails & CYCLE Engine — Simulated Logs
+            GUARD Rails & CYCLE Engine — Oversight Log
           </CardTitle>
           <CardDescription>
             Bias-blocks, dignity filters & CSAT ↔ repayment optimisation loop.

@@ -189,7 +189,7 @@ export const OCEAN_CHECKS = [
   {
     code: "C",
     label: "Compliance",
-    line: "CBK Microfinance Prudential Guideline CBK/PG/22 §4.3 (affordability) ✓",
+    line: "Affordability within SACCO lending policy (Sacco Societies Act, SASRA) ✓",
   },
   {
     code: "E",
@@ -239,7 +239,7 @@ export const DEFAULT_PROMPTS = {
     "Adopt a trust-building tone in Kiswahili-English code-switching. Acknowledge the applicant's economic dignity. Never use the word 'unbanked' — say 'differently-banked'. Surface seasonal variance as a strength, not a risk.",
 };
 
-// Kenya Agricultural Observatory mock RAG data
+// Agricultural data feed used for RAG grounding (illustrative values)
 export const AGRI_OBSERVATORY = {
   updatedAt: "Today, 06:14 EAT",
   region: "Central Rift + Lake Basin",
@@ -305,7 +305,7 @@ export const HUNTER_BRIEFING = {
   oneLine: "Approve KES 150,000 / 12-mo MAP schedule. Risk-adjusted PD: 4.8%.",
   evidence: [
     "M-Pesa 12-mo velocity: KES 864,000 (avg 72k/mo)",
-    "Harvest-aligned: matooke peaks Mar/Apr & Sep/Oct confirmed via Observatory",
+    "Harvest-aligned: matooke peaks Mar/Apr & Sep/Oct confirmed via agricultural data feed",
     "Chama (Nakasero Traders SACCO) standing: GOLD, 7 yrs, zero defaults",
     "OCEAN audit: 0.91 / 1.00 — nuance flag cleared by community officer",
   ],

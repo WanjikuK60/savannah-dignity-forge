@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { PageHeading } from "@/components/savannah/PageHeading";
 import { ArrowRight } from "lucide-react";
+import { KENYA_FACTS, KENYA_RULES } from "@/lib/kenya-facts";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -17,7 +18,7 @@ export const Route = createFileRoute("/about")({
       {
         property: "og:description",
         content:
-          "How Ujima SACCO replaces rigid banking logic with a harvest-aware, dignity-centered credit model.",
+          "A concept for replacing rigid banking logic with a harvest-aware, dignity-centered credit model.",
       },
       { property: "og:url", content: "https://wanjikuk60.github.io/savannah-loan-system/about" },
     ],
@@ -35,7 +36,7 @@ const PHASES = [
   {
     n: "02",
     title: "Tsavo Fluency",
-    body: "Teach the system to listen. The 4D Delegation Matrix routes work to humans or AI by stakes & sensitivity. Prompt craft and RAG grounding over the Kenya Agricultural Observatory keep the model in the right vocabulary.",
+    body: "Teach the system to listen. The 4D Delegation Matrix routes work to humans or AI by stakes & sensitivity. Prompt craft and RAG grounding over agricultural data keep the model in the right vocabulary.",
   },
   {
     n: "03",
@@ -55,7 +56,7 @@ function About() {
       <PageHeading
         eyebrow="About"
         title="The Savannah Precision Project Framework"
-        subtitle="A field-grounded, four-phase response to the systemic credit bias documented across East African SACCOs in 2025."
+        subtitle="A four-phase concept for fairer credit for Kenya's informal workers."
       />
 
       <Card>
@@ -64,17 +65,23 @@ function About() {
         </CardHeader>
         <CardContent className="space-y-3 text-sm text-muted-foreground">
           <p>
-            Across Kenyan SACCOs in 2025, informal market vendors were denied loans at{" "}
-            <b className="text-foreground">68%</b> versus
-            <b className="text-foreground"> 22%</b> for formally-employed peers. The cause wasn't
-            malice — it was a credit architecture that quietly assumed every borrower receives a
-            flat monthly payslip.
+            Most Kenyans earn their living informally. In 2025,{" "}
+            <b className="text-foreground">18.1 million</b> people worked in the informal sector,
+            and about <b className="text-foreground">9 in 10</b> new jobs over the last five years
+            were informal (KNBS Economic Survey 2026). Mobile money is how they get paid:{" "}
+            <b className="text-foreground">52.6%</b> of Kenyans use it every day (FinAccess 2024).
           </p>
           <p>
-            Grace Akech, a matooke vendor straddling Kampala and Nairobi, was denied four times
-            despite healthy M-Pesa cash velocity and reliable harvest-season income. Ujima SACCO
-            commissioned the Savannah Precision Project to retire that model — and replace it with
-            one that recognises the actual rhythm of vendor life.
+            Yet many credit models still assume every borrower has a flat monthly payslip. A matooke
+            vendor with strong M-Pesa inflows and reliable harvest income can look "risky" simply
+            because her income is seasonal and informal.
+          </p>
+          <p>
+            This project is a concept prototype that shows a different approach.{" "}
+            <b className="text-foreground">Ujima SACCO</b> and{" "}
+            <b className="text-foreground">Grace Akech</b> are illustrative: a fictional SACCO and
+            persona used to walk through the framework. Their figures are worked examples, not real
+            data.
           </p>
         </CardContent>
       </Card>
@@ -93,6 +100,53 @@ function About() {
           </Card>
         ))}
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Facts &amp; sources</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4 text-sm text-muted-foreground">
+          <ul className="space-y-2">
+            {KENYA_FACTS.map((f) => (
+              <li key={f.value}>
+                <b className="text-foreground">{f.value}</b> {f.label}{" "}
+                <a
+                  href={f.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary underline-offset-2 hover:underline"
+                >
+                  {f.source}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <div>
+            <div className="mb-2 font-semibold text-foreground">
+              Kenyan rules this design respects
+            </div>
+            <ul className="space-y-2">
+              {KENYA_RULES.map((r) => (
+                <li key={r.name}>
+                  {r.url ? (
+                    <a
+                      href={r.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-medium text-primary underline-offset-2 hover:underline"
+                    >
+                      {r.name}
+                    </a>
+                  ) : (
+                    <span className="font-medium text-foreground">{r.name}</span>
+                  )}
+                  : {r.what}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </CardContent>
+      </Card>
 
       <Card className="bg-secondary/30">
         <CardHeader>

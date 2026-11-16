@@ -9,7 +9,7 @@ export const Route = createFileRoute("/applicants")({
       {
         name: "description",
         content:
-          "Run mock vendor profiles through both the legacy 2025 model and the Savannah Precision Model side-by-side.",
+          "Run example vendor profiles through both the legacy 2025 model and the Savannah Precision Model side-by-side.",
       },
       { property: "og:title", content: "Applicants — Savannah Precision" },
       {
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/applicants")({
   component: () => (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
       <PageHeading
-        eyebrow="Interactive demo"
+        eyebrow="Interactive comparison"
         title="Applicant comparison"
         subtitle="Process Grace, John, or David through both models and watch the verdicts diverge."
       />

@@ -4,7 +4,6 @@ import { User, Bot, Users, Sparkles, CloudRain, Droplet, TrendingUp } from "luci
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { DELEGATION, DEFAULT_PROMPTS, AGRI_OBSERVATORY } from "@/lib/savannah-data";
 
@@ -115,20 +114,19 @@ export function Phase2() {
         </CardContent>
       </Card>
 
-      {/* Kenya Agricultural Observatory RAG */}
+      {/* Agricultural data feed (RAG) */}
       <Card className="border-accent/60">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
                 <CloudRain className="size-5 text-accent" />
-                Kenya Agricultural Observatory — RAG (sample data)
+                Agricultural Data Feed — RAG grounding
               </CardTitle>
               <CardDescription>
                 Region: {AGRI_OBSERVATORY.region} · Updated {AGRI_OBSERVATORY.updatedAt}
               </CardDescription>
             </div>
-            <Badge className="bg-accent text-accent-foreground">SAMPLE</Badge>
           </div>
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-3">
