@@ -22,9 +22,27 @@ export function Phase2() {
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-3">
           {[
-            { key: "human", icon: User, title: "Human", color: "text-primary", items: DELEGATION.human },
-            { key: "ai", icon: Bot, title: "AI", color: "text-accent-foreground", items: DELEGATION.ai },
-            { key: "collab", icon: Users, title: "Collaborative", color: "text-chart-3", items: DELEGATION.collaborative },
+            {
+              key: "human",
+              icon: User,
+              title: "Human",
+              color: "text-primary",
+              items: DELEGATION.human,
+            },
+            {
+              key: "ai",
+              icon: Bot,
+              title: "AI",
+              color: "text-accent-foreground",
+              items: DELEGATION.ai,
+            },
+            {
+              key: "collab",
+              icon: Users,
+              title: "Collaborative",
+              color: "text-chart-3",
+              items: DELEGATION.collaborative,
+            },
           ].map((col) => {
             const Icon = col.icon;
             return (
@@ -88,7 +106,10 @@ export function Phase2() {
           </div>
           {tone === "preview" && (
             <div className="rounded-lg border-l-4 border-primary bg-secondary/40 p-3 text-sm">
-              <b>AI →</b> "Karibu Grace! Tumeona ya kwamba mauzo yako ya matooke yanapanda Machi na Septemba. Tutapanga marejesho yapungue miezi mingine ili biashara yako iendelee kustawi. (We've designed lighter repayments for off-harvest months so your business keeps thriving.)"
+              <b>AI →</b> "Karibu Grace! Tumeona ya kwamba mauzo yako ya matooke yanapanda Machi na
+              Septemba. Tutapanga marejesho yapungue miezi mingine ili biashara yako iendelee
+              kustawi. (We've designed lighter repayments for off-harvest months so your business
+              keeps thriving.)"
             </div>
           )}
         </CardContent>
@@ -101,13 +122,13 @@ export function Phase2() {
             <div>
               <CardTitle className="flex items-center gap-2">
                 <CloudRain className="size-5 text-accent" />
-                Kenya Agricultural Observatory — Live RAG
+                Kenya Agricultural Observatory — RAG (sample data)
               </CardTitle>
               <CardDescription>
                 Region: {AGRI_OBSERVATORY.region} · Updated {AGRI_OBSERVATORY.updatedAt}
               </CardDescription>
             </div>
-            <Badge className="bg-accent text-accent-foreground">LIVE</Badge>
+            <Badge className="bg-accent text-accent-foreground">SAMPLE</Badge>
           </div>
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-3">
@@ -138,10 +159,23 @@ export function Phase2() {
   );
 }
 
-function Stat({ icon, label, value, sub }: { icon: React.ReactNode; label: string; value: string; sub: string }) {
+function Stat({
+  icon,
+  label,
+  value,
+  sub,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  sub: string;
+}) {
   return (
     <div className="rounded-lg border bg-card p-4">
-      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">{icon}{label}</div>
+      <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+        {icon}
+        {label}
+      </div>
       <div className="mt-1 text-2xl font-bold tabular-nums">{value}</div>
       <div className="text-xs text-muted-foreground">{sub}</div>
     </div>

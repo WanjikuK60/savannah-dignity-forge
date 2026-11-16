@@ -3,7 +3,11 @@ import { Link } from "@tanstack/react-router";
 import { Mountain } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-const NAV: { to: "/" | "/applicants" | "/phase-1" | "/phase-2" | "/phase-3" | "/phase-4" | "/about"; label: string; exact?: boolean }[] = [
+const NAV: {
+  to: "/" | "/applicants" | "/phase-1" | "/phase-2" | "/phase-3" | "/phase-4" | "/about";
+  label: string;
+  exact?: boolean;
+}[] = [
   { to: "/", label: "Home", exact: true },
   { to: "/applicants", label: "Applicants" },
   { to: "/phase-1", label: "Phase 1 · Diagnostic" },
@@ -23,7 +27,9 @@ export function SiteHeader() {
               <Mountain className="size-6" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight md:text-2xl">Savannah Precision Loan System</h1>
+              <h1 className="text-xl font-bold tracking-tight md:text-2xl">
+                Savannah Precision Loan System
+              </h1>
               <p className="text-xs text-primary-foreground/80 md:text-sm">
                 Ujima SACCO · East Africa · Human-centered credit decisioning
               </p>
@@ -31,8 +37,18 @@ export function SiteHeader() {
           </Link>
           <div className="flex flex-wrap items-center gap-2 text-xs">
             <Badge className="bg-accent text-accent-foreground">CBK Aligned</Badge>
-            <Badge variant="outline" className="border-primary-foreground/30 text-primary-foreground">v1.0 · Pilot Nairobi</Badge>
-            <Badge variant="outline" className="border-primary-foreground/30 text-primary-foreground">Kill Switch: armed</Badge>
+            <Badge
+              variant="outline"
+              className="border-primary-foreground/30 text-primary-foreground"
+            >
+              v1.0 · Pilot Nairobi
+            </Badge>
+            <Badge
+              variant="outline"
+              className="border-primary-foreground/30 text-primary-foreground"
+            >
+              Kill Switch: armed
+            </Badge>
           </div>
         </div>
 
@@ -57,7 +73,8 @@ export function SiteFooter() {
   return (
     <footer className="mt-12 border-t bg-secondary/30">
       <div className="mx-auto max-w-7xl px-4 py-6 text-center text-xs text-muted-foreground md:px-8">
-        Built on the Savannah Precision Project Framework · Phases 1–4 · OCEAN · ETHOS · TRACK · OASIS · PRIDE · GUARD · CYCLE
+        Built on the Savannah Precision Project Framework · Phases 1–4 · OCEAN · ETHOS · TRACK ·
+        OASIS · PRIDE · GUARD · CYCLE
       </div>
     </footer>
   );

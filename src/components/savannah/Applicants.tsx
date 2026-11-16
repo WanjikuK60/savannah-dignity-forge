@@ -17,19 +17,26 @@ export function Applicants() {
         <CardHeader>
           <CardTitle>Mock Applicants — Process through both models</CardTitle>
           <CardDescription>
-            Select an applicant to see the legacy 2025 model vs the Savannah Precision recalculation.
+            Select an applicant to see the legacy 2025 model vs the Savannah Precision
+            recalculation.
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-3 md:grid-cols-3">
           {APPLICANTS.map((a) => (
             <button
               key={a.id}
-              onClick={() => { setSelected(a); setProcessed(false); }}
+              onClick={() => {
+                setSelected(a);
+                setProcessed(false);
+              }}
               className={`rounded-xl border p-4 text-left transition hover:border-primary ${selected.id === a.id ? "border-primary bg-primary/5" : "bg-card"}`}
             >
               <div className="flex items-center gap-3">
                 <div className="flex size-10 items-center justify-center rounded-full bg-accent font-bold text-accent-foreground">
-                  {a.name.split(" ").map(n => n[0]).join("")}
+                  {a.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
                 </div>
                 <div>
                   <div className="font-semibold">{a.name}</div>
@@ -47,7 +54,10 @@ export function Applicants() {
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
               <CardTitle>{selected.name}</CardTitle>
-              <CardDescription>{selected.location} · Requesting KES {selected.requestedLoan.toLocaleString()} over {selected.tenureMonths} months</CardDescription>
+              <CardDescription>
+                {selected.location} · Requesting KES {selected.requestedLoan.toLocaleString()} over{" "}
+                {selected.tenureMonths} months
+              </CardDescription>
             </div>
             <Button onClick={() => setProcessed(true)} className="gap-2">
               Run through both models <ArrowRight className="size-4" />
@@ -55,9 +65,18 @@ export function Applicants() {
           </div>
         </CardHeader>
         <CardContent className="grid gap-4 text-sm md:grid-cols-3">
-          <Stat label="Formal monthly income" value={`KES ${selected.monthlyFormalIncome.toLocaleString()}`} />
-          <Stat label="M-Pesa velocity (avg/mo)" value={`KES ${selected.mpesaVelocity.toLocaleString()}`} />
-          <Stat label="Seasonality index" value={`${(selected.seasonalityIndex * 100).toFixed(0)}%`} />
+          <Stat
+            label="Formal monthly income"
+            value={`KES ${selected.monthlyFormalIncome.toLocaleString()}`}
+          />
+          <Stat
+            label="M-Pesa velocity (avg/mo)"
+            value={`KES ${selected.mpesaVelocity.toLocaleString()}`}
+          />
+          <Stat
+            label="Seasonality index"
+            value={`${(selected.seasonalityIndex * 100).toFixed(0)}%`}
+          />
         </CardContent>
       </Card>
 
@@ -95,8 +114,20 @@ function Stat({ label, value }: { label: string; value: string }) {
 }
 
 function ModelResult({
-  title, tone, approved, score, reason, extra,
-}: { title: string; tone: "good" | "bad"; approved: boolean; score: number; reason: string; extra: string }) {
+  title,
+  tone,
+  approved,
+  score,
+  reason,
+  extra,
+}: {
+  title: string;
+  tone: "good" | "bad";
+  approved: boolean;
+  score: number;
+  reason: string;
+  extra: string;
+}) {
   return (
     <Card className={tone === "good" ? "border-primary/50" : "border-destructive/50"}>
       <CardHeader>
@@ -111,7 +142,10 @@ function ModelResult({
       <CardContent className="space-y-2 text-sm">
         <div>
           <div className="text-xs text-muted-foreground">Risk score</div>
-          <div className="text-3xl font-bold tabular-nums">{score}<span className="text-base text-muted-foreground">/100</span></div>
+          <div className="text-3xl font-bold tabular-nums">
+            {score}
+            <span className="text-base text-muted-foreground">/100</span>
+          </div>
         </div>
         <p className="font-medium">{reason}</p>
         <p className="text-muted-foreground">{extra}</p>
