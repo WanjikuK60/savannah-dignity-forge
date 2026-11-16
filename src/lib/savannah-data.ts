@@ -106,12 +106,21 @@ export function buildSchedule(
   const r = annualRatePct / 100 / 12;
   // standard amortising payment
   const flat =
-    r === 0
-      ? principal / tenureMonths
-      : (principal * r) / (1 - Math.pow(1 + r, -tenureMonths));
+    r === 0 ? principal / tenureMonths : (principal * r) / (1 - Math.pow(1 + r, -tenureMonths));
 
   const monthLabels = [
-    "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec",
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
   ];
 
   // For MAP: weight harvest months ×1.8, off-harvest ×0.65, then normalise so NPV ~ standard total
@@ -119,12 +128,7 @@ export function buildSchedule(
   let totalWeight = 0;
   for (let i = 0; i < tenureMonths; i++) {
     const calMonth = i % 12;
-    const w =
-      mode === "map"
-        ? HARVEST_MONTHS.includes(calMonth)
-          ? 1.8
-          : 0.65
-        : 1;
+    const w = mode === "map" ? (HARVEST_MONTHS.includes(calMonth) ? 1.8 : 0.65) : 1;
     weights.push(w);
     totalWeight += w;
   }
@@ -151,18 +155,12 @@ export function scoreApplicant(a: Applicant) {
   // Legacy rigid model: only formal payslip income, flat affordability ratio
   const legacyAffordable = a.monthlyFormalIncome * a.tenureMonths * 0.35;
   const legacyApproved = legacyAffordable >= a.requestedLoan * 0.4;
-  const legacyScore = Math.min(
-    100,
-    Math.round((a.monthlyFormalIncome / 1000) * 1.4),
-  );
+  const legacyScore = Math.min(100, Math.round((a.monthlyFormalIncome / 1000) * 1.4));
 
   // Savannah Precision: blended cash velocity + seasonal harvest alignment
   const blendedMonthly = a.monthlyFormalIncome + a.mpesaVelocity * 0.75;
   const seasonalBoost = a.harvestAligned ? 12 : 0;
-  const precisionScore = Math.min(
-    100,
-    Math.round((blendedMonthly / 1500) + seasonalBoost),
-  );
+  const precisionScore = Math.min(100, Math.round(blendedMonthly / 1500 + seasonalBoost));
   const precisionAffordable = blendedMonthly * a.tenureMonths * 0.32;
   const precisionApproved = precisionAffordable >= a.requestedLoan * 0.55;
 
@@ -183,11 +181,31 @@ export function scoreApplicant(a: Applicant) {
 
 // OCEAN audit lines for the Verifier terminal
 export const OCEAN_CHECKS = [
-  { code: "O", label: "Ownership", line: "Data source provenance: M-Pesa Daraja API, signed by Safaricom KYC token ✓" },
-  { code: "C", label: "Compliance", line: "CBK Microfinance Prudential Guideline CBK/PG/22 §4.3 (affordability) ✓" },
-  { code: "E", label: "Ethics", line: "No proxy variables for tribe, gender, marital status detected ✓" },
-  { code: "A", label: "Accuracy", line: "12-mo M-Pesa rolling window reconciled to ±0.4% of statement total ✓" },
-  { code: "N", label: "Nuance", line: "Seasonal harvest signal applied; flagged for human cultural validation ⚑" },
+  {
+    code: "O",
+    label: "Ownership",
+    line: "Data source provenance: M-Pesa Daraja API, signed by Safaricom KYC token ✓",
+  },
+  {
+    code: "C",
+    label: "Compliance",
+    line: "CBK Microfinance Prudential Guideline CBK/PG/22 §4.3 (affordability) ✓",
+  },
+  {
+    code: "E",
+    label: "Ethics",
+    line: "No proxy variables for tribe, gender, marital status detected ✓",
+  },
+  {
+    code: "A",
+    label: "Accuracy",
+    line: "12-mo M-Pesa rolling window reconciled to ±0.4% of statement total ✓",
+  },
+  {
+    code: "N",
+    label: "Nuance",
+    line: "Seasonal harvest signal applied; flagged for human cultural validation ⚑",
+  },
 ] as const;
 
 // 4D Delegation Matrix
@@ -296,8 +314,17 @@ export const HUNTER_BRIEFING = {
 };
 
 export const GUARD_LOGS = [
-  { type: "Bias Block", msg: "Denied auto-rejection on female vendor cluster (variance 11.2%) — referred to human." },
-  { type: "Dignity Filter", msg: "Replaced 'unbanked' → 'differently-banked' in 4 outbound messages." },
-  { type: "CYCLE", msg: "CSAT 4.7/5 last 24h ↔ 30-day repayment compliance 96.2% — weights re-balanced." },
+  {
+    type: "Bias Block",
+    msg: "Denied auto-rejection on female vendor cluster (variance 11.2%) — referred to human.",
+  },
+  {
+    type: "Dignity Filter",
+    msg: "Replaced 'unbanked' → 'differently-banked' in 4 outbound messages.",
+  },
+  {
+    type: "CYCLE",
+    msg: "CSAT 4.7/5 last 24h ↔ 30-day repayment compliance 96.2% — weights re-balanced.",
+  },
   { type: "Bias Block", msg: "Held loan for review: counterfactual gender swap changed outcome." },
 ];

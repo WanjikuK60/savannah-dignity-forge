@@ -21,15 +21,15 @@ export function Phase3() {
       <Card>
         <CardHeader>
           <CardTitle>ETHOS Transformation Tool</CardTitle>
-          <CardDescription>
-            Blind prompts → Dignity-centered commands.
-          </CardDescription>
+          <CardDescription>Blind prompts → Dignity-centered commands.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           {ETHOS_TRANSFORMS.map((t, i) => (
             <div key={i} className="grid gap-3 md:grid-cols-[1fr_auto_1fr] md:items-center">
               <div className="rounded-lg border border-destructive/40 bg-destructive/5 p-3 text-sm">
-                <Badge variant="destructive" className="mb-1">Blind</Badge>
+                <Badge variant="destructive" className="mb-1">
+                  Blind
+                </Badge>
                 <div>{t.blind}</div>
               </div>
               <ArrowRight className="mx-auto text-primary" />
@@ -52,10 +52,13 @@ export function Phase3() {
               </CardTitle>
               <CardDescription>Bias drift across five axes (last 30 days).</CardDescription>
             </div>
-            <div className={`flex items-center gap-3 rounded-lg border px-3 py-2 ${killSwitch ? "border-destructive bg-destructive/10" : ""}`}>
+            <div
+              className={`flex items-center gap-3 rounded-lg border px-3 py-2 ${killSwitch ? "border-destructive bg-destructive/10" : ""}`}
+            >
               <Power className={`size-4 ${killSwitch ? "text-destructive" : ""}`} />
               <Label htmlFor="kill" className="text-sm font-semibold">
-                Kill Switch — halts automated screening if variance &gt; {BIAS_BASELINE.killSwitchThreshold}%
+                Kill Switch — halts automated screening if variance &gt;{" "}
+                {BIAS_BASELINE.killSwitchThreshold}%
               </Label>
               <Switch id="kill" checked={killSwitch} onCheckedChange={setKillSwitch} />
             </div>
@@ -64,14 +67,17 @@ export function Phase3() {
         <CardContent className="space-y-3">
           {variancePastThreshold && (
             <div className="rounded-lg border border-destructive bg-destructive/10 p-3 text-sm">
-              ⚠️ Current vendor-denial variance is <b>{variance}%</b> — above {BIAS_BASELINE.killSwitchThreshold}% threshold.
-              Recommend engaging Kill Switch and routing all decisions to human officers.
+              ⚠️ Current vendor-denial variance is <b>{variance}%</b> — above{" "}
+              {BIAS_BASELINE.killSwitchThreshold}% threshold. Recommend engaging Kill Switch and
+              routing all decisions to human officers.
             </div>
           )}
           {TRACK_AXES.map((a) => (
             <div key={a.code}>
               <div className="mb-1 flex items-center justify-between text-sm">
-                <span className="font-medium">[{a.code}] {a.label}</span>
+                <span className="font-medium">
+                  [{a.code}] {a.label}
+                </span>
                 <span className="tabular-nums text-muted-foreground">{a.drift}% drift</span>
               </div>
               <Progress value={a.drift * 10} />
@@ -87,18 +93,27 @@ export function Phase3() {
             <Shield className="size-5 text-primary" />
             OASIS Data Stewardship & PRIDE Oversight Loop
           </CardTitle>
-          <CardDescription>Data Sovereignty Charter — applicant-controlled opt-ins.</CardDescription>
+          <CardDescription>
+            Data Sovereignty Charter — applicant-controlled opt-ins.
+          </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-6 md:grid-cols-2">
           <div className="space-y-3">
             <h4 className="font-semibold">Sovereignty toggles (per applicant)</h4>
             {toggles.map((t) => (
-              <div key={t.key} className="flex items-center justify-between rounded-lg border bg-secondary/30 p-3">
-                <Label htmlFor={t.key} className="text-sm">{t.label}</Label>
+              <div
+                key={t.key}
+                className="flex items-center justify-between rounded-lg border bg-secondary/30 p-3"
+              >
+                <Label htmlFor={t.key} className="text-sm">
+                  {t.label}
+                </Label>
                 <Switch
                   id={t.key}
                   checked={t.on}
-                  onCheckedChange={(v) => setToggles(toggles.map(x => x.key === t.key ? { ...x, on: v } : x))}
+                  onCheckedChange={(v) =>
+                    setToggles(toggles.map((x) => (x.key === t.key ? { ...x, on: v } : x)))
+                  }
                 />
               </div>
             ))}
@@ -118,7 +133,9 @@ export function Phase3() {
                 "Decision logged with cultural rationale",
               ].map((step, i) => (
                 <li key={step} className="flex gap-3 rounded-lg border bg-card p-2">
-                  <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">{i+1}</span>
+                  <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">
+                    {i + 1}
+                  </span>
                   <span>{step}</span>
                 </li>
               ))}
